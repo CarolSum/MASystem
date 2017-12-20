@@ -24,12 +24,13 @@ public class TeacherDAO {
 	}
 	
 	public void insert(Teacher teacher) {
-		String sql = "insert into teacher values(null,?,?)";
+		String sql = "insert into teacher values(null,?,?,?)";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			//设置预编译参数
 			ps.setString(1, teacher.getName());
 			ps.setString(2, teacher.getPassword());
+			ps.setString(3, teacher.getSid());
 			//执行
 			ps.execute();
 			ps.close();
@@ -56,12 +57,13 @@ public class TeacherDAO {
 	
 	
 	public void update(Teacher teacher) {
-		String sql = "update teacher set name = ?, password = ? where id = ?";
+		String sql = "update teacher set name = ?, password = ?, sid = ? where id = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, teacher.getName());
 			ps.setString(2, teacher.getPassword());
-			ps.setInt(3, teacher.getId());
+			ps.setString(3, teacher.getSid());
+			ps.setInt(4, teacher.getId());
 			ps.execute();
 			
 			ps.close();
@@ -71,33 +73,37 @@ public class TeacherDAO {
 		}
 	}
 	
-	public Teacher findOne(int teacherId) {
-		Teacher teaceher = null;
-		String sql = "select * from teacher where id = ?";
+	public Teacher findOne(String sid, String password) {
+		Teacher teacher = null;
+		String sql = "select * from teacher where sid = ? AND password = ?";
 		PreparedStatement ps;
 		try {
 			ps = c.prepareStatement(sql);
-			ps.setInt(1, teacherId);
+			ps.setString(1, sid);
+			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				teaceher = new Teacher();
-				int id = rs.getInt(1);
+				teacher = new Teacher();
+				int id = rs.getInt(1);				
 				String name = rs.getString(2);
-				String password = rs.getString(3);
+				String _password = rs.getString(3);
+				String _sid = rs.getString(4);
 		
-				teaceher.setId(id);
-				teaceher.setName(name);
-				teaceher.setPassword(password);
-		
+				teacher.setId(id);
+				teacher.setName(name);
+				teacher.setPassword(_password);
+				teacher.setSid(_sid);
+				System.out.println("find a Teacher: " + teacher.getName());
 			}
 			ps.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return teaceher;
+		
+		return teacher;
 	}
-	
 	
 	@Override
 	public void finalize() throws Throwable {
@@ -110,6 +116,38 @@ public class TeacherDAO {
 			}
 		}
 		super.finalize();
+	}
+
+	public Teacher findOneBySid(String sid) {
+		// TODO Auto-generated method stub
+		Teacher teacher = null;
+		String sql = "select * from teacher where sid = ?";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, sid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				teacher = new Teacher();
+				int id = rs.getInt(1);				
+				String name = rs.getString(2);
+				String _password = rs.getString(3);
+				String _sid = rs.getString(4);
+		
+				teacher.setId(id);
+				teacher.setName(name);
+				teacher.setPassword(_password);
+				teacher.setSid(_sid);
+				System.out.println("find a Teacher: " + teacher.getName());
+			}
+			ps.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return teacher;
 	}
 
 }

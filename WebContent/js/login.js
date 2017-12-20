@@ -1,0 +1,12 @@
+$(function(){
+    $('#button').click(function(){
+        $('.content').transition({
+            rotateY:'180deg'
+        })
+    })
+    $('#back-to-login').click(function(){
+        $('.content').transition({
+            rotateY:'0deg'
+        })
+    })
+})

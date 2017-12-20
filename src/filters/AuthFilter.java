@@ -11,6 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.User;
+
 public class AuthFilter implements Filter {
 
 	@Override
@@ -40,8 +42,8 @@ public class AuthFilter implements Filter {
 			return;
 		}
 		
-		String username = (String) request.getSession().getAttribute("username");
-		if(null == username) {
+		User user = (User) request.getSession().getAttribute("user");
+		if(null == user) {
 			response.sendRedirect("login");
 			return;
 		}

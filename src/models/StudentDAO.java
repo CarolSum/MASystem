@@ -31,7 +31,7 @@ public class StudentDAO{
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			//设置预编译参数
-			ps.setInt(1, student.getSid());
+			ps.setString(1, student.getSid());
 			ps.setString(2, student.getName());
 			ps.setString(3, student.getPassword());
 			//执行
@@ -69,7 +69,7 @@ public class StudentDAO{
 		String sql = "update student set sid = ?, name = ?, password = ? where id = ?";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setInt(1, student.getSid());
+			ps.setString(1, student.getSid());
 			ps.setString(2, student.getName());
 			ps.setString(3, student.getPassword());
 			ps.setInt(4, student.getId());
@@ -82,32 +82,35 @@ public class StudentDAO{
 		}
 	}
 	
-	public Student findOne(int studentId) {
+	public Student findOne(String studentId, String password) {
 		Student student = null;
-		String sql = "select * from student where id = ?";
+		String sql = "select * from student where sid = ? AND password = ?";
 		PreparedStatement ps;
 		try {
 			ps = c.prepareStatement(sql);
-			ps.setInt(1, studentId);
+			ps.setString(1, studentId);
+			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				student = new Student();
 				int id = rs.getInt(1);
-				int sid = rs.getInt(2);
+				String sid = rs.getString(2);
 				String name = rs.getString(3);
-				String password = rs.getString(4);
+				String _password = rs.getString(4);
 		
 				student.setId(id);
 				student.setName(name);
-				student.setPassword(password);
+				student.setPassword(_password);
 				student.setSid(sid);
 		
 			}
 			ps.close();
+			System.out.println("find a student: " + student.getName());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return student;
 	}
 	
@@ -121,7 +124,7 @@ public class StudentDAO{
 			while(rs.next()) {
 				Student student = new Student();
 				int id = rs.getInt(1);
-				int sid = rs.getInt(2);
+				String sid = rs.getString(2);
 				String name = rs.getString(3);
 				String password = rs.getString(4);
 				
@@ -151,5 +154,37 @@ public class StudentDAO{
 			}
 		}
 		super.finalize();
+	}
+
+	public Student findStudentBySid(String sid) {
+		// TODO Auto-generated method stub
+		Student student = null;
+		String sql = "select * from student where sid = ?";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, sid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				student = new Student();
+				int id = rs.getInt(1);
+				String _sid = rs.getString(2);
+				String name = rs.getString(3);
+				String _password = rs.getString(4);
+		
+				student.setId(id);
+				student.setName(name);
+				student.setPassword(_password);
+				student.setSid(_sid);
+				System.out.println("find a student: " + student.getName());
+			}
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return student;
 	}
 }

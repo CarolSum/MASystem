@@ -2,7 +2,7 @@ package models;
 
 public class Student extends User{
 	private int id; 
-	private int sid; //Ñ§ºÅ
+	private String sid; //Ñ§ºÅ
 	
 	public int getId() {
 		return id;
@@ -11,10 +11,10 @@ public class Student extends User{
 		this.id = id;
 	}
 	
-	public int getSid() {
+	public String getSid() {
 		return sid;
 	}
-	public void setSid(int sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
 	
