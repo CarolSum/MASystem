@@ -27,7 +27,7 @@ public class HomeworkItemDAO {
 	}
 	
 	public void insert(HomeworkItem homeworkItem) {
-		String sql = "insert into homeworkitem values(null,?,?,?,?,?)";
+		String sql = "insert into homeworkitem values(null,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			//设置预编译参数
@@ -36,6 +36,7 @@ public class HomeworkItemDAO {
 			ps.setInt(3, homeworkItem.getScore());
 			ps.setString(4, homeworkItem.getFeedback());
 			ps.setInt(5, HomeworkItem.HomeworkStatus_NoSubmit);
+			ps.setString(6, "");
 			//执行
 			ps.execute();
 			ps.close();
@@ -50,14 +51,26 @@ public class HomeworkItemDAO {
 	 * @param hwID
 	 */
 	public void delete() {
-	
+		
 	}
 	
 	/**
 	 * 更新作业item
 	 */
 	public void update(HomeworkItem homeworkItem) {
-		
+		String sql = "update homeworkitem set status = ?, uploadURL = ? where id = ?";
+		try {
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, homeworkItem.getStatus());
+			ps.setString(2, homeworkItem.getUploadURL());
+			ps.setInt(3, homeworkItem.getId());
+			ps.execute();
+			
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public HomeworkItem findOne(int hwId, String sid) {
@@ -79,6 +92,7 @@ public class HomeworkItemDAO {
 				int score = rs.getInt(4);
 				String feedback = rs.getString(5);
 				int status = rs.getInt(6);
+				String uploadURL = rs.getString(7);
 				
 				hi.setId(id);
 				hi.setStudentId(studentId);
@@ -86,6 +100,7 @@ public class HomeworkItemDAO {
 				hi.setScore(score);
 				hi.setFeedback(feedback);
 				hi.setStatus(status);
+				hi.setUploadURL(uploadURL);
 			}
 			ps.close();
 			

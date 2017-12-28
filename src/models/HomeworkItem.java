@@ -11,7 +11,16 @@ public class HomeworkItem {
 	private int score;// ×÷Òµ³É¼¨
 	private String feedback;
 	private int status;
+	private String uploadURL;
 	
+	public String getUploadURL() {
+		return uploadURL;
+	}
+
+	public void setUploadURL(String uploadURL) {
+		this.uploadURL = uploadURL;
+	}
+
 	public int getStatus() {
 		return status;
 	}

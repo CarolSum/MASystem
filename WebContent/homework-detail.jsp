@@ -90,7 +90,7 @@
               <span class="user-hw-status">状态：未提交</span>
             </c:if>
             <c:if test="${curHomeworkItem.status == 1}">
-              <span class="user-hw-status">状态：已提交 <button class="btn btn-primary" id="download-hw">查看下载</button></span>
+              <span class="user-hw-status">状态：已提交 <button class="btn btn-primary" id="download-hw"><a href="/MASystem/download?hiid=${curHomeworkItem.id} ">查看下载</a></button></span>
             </c:if>
             <c:if test="${user.type == 1}">
               <span class="user-hw-status">
@@ -116,15 +116,21 @@
               <div class="col-md-10"> ${curHomework.content}</div>
             </div>
 
-            <div id="upload-hw">
+            <!-- <form id="upload-hw" action="/MASystem/upload" method="post"  enctype="multipart/form-data">
               <div class="upload-head">提交作业</div>
               <div class="upload-group">
                 <div class="file-loading">
-                  <input id="input-b7" name="input-b7[]" multiple type="file" class="file" data-allowed-file-extensions='["rar", "txt"]' data-show-preview="false" data-el-error-container='#err' data-upload-url='/MASystem/upload' data-show-caption="true">
+                  <input id="file" name="file" multiple type="file" class="file" data-allowed-file-extensions='["rar", "txt"]' data-show-preview="false" data-el-error-container='#err' data-upload-url='/MASystem/upload' data-show-caption="true">
                 </div>
                 <div id="err"></div>
               </div>
-            </div>
+            </form> -->
+            <form method="post" action="/MASystem/upload" enctype="multipart/form-data">
+                选择一个文件:
+                <input type="file" name="uploadFile" />
+                <br/><br/>
+                <input type="submit" value="上传" />
+            </form>
           </div>
 
           

@@ -111,6 +111,16 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>servlets.DownloadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
 	
 	<filter>
 		<filter-name>AuthFilter</filter-name>
