@@ -42,6 +42,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+    <servlet-name>PublishServlet</servlet-name>
+    <servlet-class>servlets.PublishServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>PublishServlet</servlet-name>
+    <url-pattern>/publish</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
 		<servlet-name>RankingServlet</servlet-name>
 		<servlet-class>servlets.RankingServlet</servlet-class>
 	</servlet>
@@ -58,8 +68,49 @@
 	
 	<servlet-mapping>
 		<servlet-name>NotifyServlet</servlet-name>
-		<url-pattern>/notifications</url-pattern>
+		<url-pattern>/notification</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+    <servlet-name>HwDetailServlet</servlet-name>
+    <servlet-class>servlets.HwDetailServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>HwDetailServlet</servlet-name>
+    <url-pattern>/homework-detail</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <servlet-class>servlets.UserInfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <url-pattern>/user-info</url-pattern>
+  </servlet-mapping>
+	
+	
+	<servlet>
+    <servlet-name>HomeworkModifyServlet</servlet-name>
+    <servlet-class>servlets.HomeworkModifyServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>HomeworkModifyServlet</servlet-name>
+    <url-pattern>/homework-modify</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>servlets.UploadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
 	
 	<filter>
 		<filter-name>AuthFilter</filter-name>

@@ -27,7 +27,22 @@ public class HomeworkItemDAO {
 	}
 	
 	public void insert(HomeworkItem homeworkItem) {
-		
+		String sql = "insert into homeworkitem values(null,?,?,?,?,?)";
+		try {
+			PreparedStatement ps = c.prepareStatement(sql);
+			//设置预编译参数
+			ps.setString(1, homeworkItem.getStudentId());
+			ps.setInt(2, homeworkItem.getHwId());
+			ps.setInt(3, homeworkItem.getScore());
+			ps.setString(4, homeworkItem.getFeedback());
+			ps.setInt(5, HomeworkItem.HomeworkStatus_NoSubmit);
+			//执行
+			ps.execute();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -45,8 +60,40 @@ public class HomeworkItemDAO {
 		
 	}
 	
-	public HomeworkItem findOne() {
-		return null;
+	public HomeworkItem findOne(int hwId, String sid) {
+//		private String studentId; //学生id
+//		private int hwId; //作业id
+		HomeworkItem hi = null;
+		String sql = "select * from homeworkitem where studentId = ? AND hwId = ?";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, sid);
+			ps.setInt(2, hwId);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				hi = new HomeworkItem();
+				int id = rs.getInt(1);				
+				String studentId = rs.getString(2);
+				int _hwId = rs.getInt(3);
+				int score = rs.getInt(4);
+				String feedback = rs.getString(5);
+				int status = rs.getInt(6);
+				
+				hi.setId(id);
+				hi.setStudentId(studentId);
+				hi.setHwId(_hwId);
+				hi.setScore(score);
+				hi.setFeedback(feedback);
+				hi.setStatus(status);
+			}
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return hi;
 	}
 	
 	public List<HomeworkItem> homeworkItemList() {

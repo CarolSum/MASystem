@@ -31,14 +31,10 @@ body{
 .signup-page{transform:rotateY(-180deg);}
 
 .signin-page{
-    border-radius: 10px;
-    box-shadow: 0px 0px 30px 2px #aaaaaa;
-    background-color: #fff;
-    margin: 0 auto;
     z-index: 2;
 }
 
-.signup-page{
+.signin-page, .signup-page{
     border-radius: 10px;
     box-shadow: 0px 0px 30px 2px #aaaaaa;
     background-color: #fff;
@@ -56,7 +52,7 @@ body{
 }
 
 button{
-    margin-top: 30px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
@@ -73,7 +69,26 @@ button{
     transition: all ease-in 0.2s;
 }
 
-#button:hover, #back-to-login{
+.signup-page #back-to-login{
+    margin-top: 15px;
+}
+
+#button:hover, #back-to-login:hover{
     opacity: 0.8;
     cursor: pointer;
+}
+
+.signup-page .form-group{
+    margin-bottom: 5px;
+}
+
+#user-type{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: #ccc;
+}
+
+.signup-form{
+    padding: 0 40px;
 }

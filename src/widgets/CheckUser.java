@@ -5,18 +5,16 @@ import models.StudentDAO;
 import models.Teacher;
 import models.TeacherDAO;
 import models.User;
+import models.UserDAO;
 
 public class CheckUser {
 	/*
 	 * check if sid && password correct from db.
 	 * */
 	public static User checkLogin(String sid, String password){
-		StudentDAO sd = new StudentDAO();
-		Student stu = sd.findOne(sid, password);
-		if(stu != null) return stu;
-		TeacherDAO td = new TeacherDAO();
-		Teacher teacher = td.findOne(sid, password);
-		if(teacher != null) return teacher;
+		UserDAO ud = new UserDAO();
+		User user = ud.findOne(sid, password);
+		if(user != null) return user;
 		return null;
 	}
 	
@@ -26,10 +24,8 @@ public class CheckUser {
 	 * @return
 	 */
 	public static boolean CheckRepeat(String sid) {
-		StudentDAO sd = new StudentDAO();
-		if(sd.findStudentBySid(sid) != null) return true;
-		TeacherDAO td = new TeacherDAO();
-		if(td.findOneBySid(sid) != null) return true;
+		UserDAO ud = new UserDAO();
+		if(ud.findUserBySid(sid) != null) return true;
 		return false;
 	}
 }

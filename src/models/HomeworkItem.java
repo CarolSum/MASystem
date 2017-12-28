@@ -1,17 +1,31 @@
 package models;
 
 public class HomeworkItem {
+	
+	public static int HomeworkStatus_HasSubmit = 1;
+	public static int HomeworkStatus_NoSubmit = 0;
+	
 	private int id;
-	private int studentId; //学生id
+	private String studentId; //学生id
 	private int hwId; //作业id
 	private int score;// 作业成绩
 	private String feedback;
+	private int status;
 	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public HomeworkItem() {}
 	
-	public HomeworkItem(int studentId, int hwId, int score, String feedback) {
+	public HomeworkItem(String studentId, int hwId) {
 		this.studentId = studentId;
 		this.hwId = hwId;
+		this.status = HomeworkStatus_NoSubmit;
 	}
 	
 	public int getId() {
@@ -22,10 +36,10 @@ public class HomeworkItem {
 		this.id = id;
 	}
 	
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(int studentId) {
+	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
 	public int getHwId() {

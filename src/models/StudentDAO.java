@@ -102,10 +102,10 @@ public class StudentDAO{
 				student.setName(name);
 				student.setPassword(_password);
 				student.setSid(sid);
-		
+				System.out.println("find a student: " + student.getName());
 			}
 			ps.close();
-			System.out.println("find a student: " + student.getName());
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

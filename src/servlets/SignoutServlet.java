@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SignoutServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{    
 		 response.setContentType("text/html; charset=UTF-8");
-		 response.getWriter().println("µÇ³ö");
+		 //delete all sessions
+		 request.getSession().invalidate();
+		 response.sendRedirect("/MASystem/login");
 	}
 }

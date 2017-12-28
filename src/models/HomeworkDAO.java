@@ -30,10 +30,11 @@ public class HomeworkDAO{
 	 * 插入新Homework
 	 * @param homework
 	 */
-	public void insert(Homework homework) {
+	public int insert(Homework homework) {
+		int newestId = 0;
 		String sql = "insert into homework values(null,?,?,?,?)";
 		try {
-			PreparedStatement ps = c.prepareStatement(sql);
+			PreparedStatement ps = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			//设置预编译参数
 			ps.setString(1, homework.getTitle());
 			ps.setString(2, homework.getContent());
@@ -41,12 +42,17 @@ public class HomeworkDAO{
 			ps.setString(4, homework.getEndDate());
 			//执行
 			ps.execute();
+			ResultSet rs = ps.getGeneratedKeys();
+			if(rs.next()) {
+				newestId = rs.getInt(1);
+				System.out.println("作业ID："+newestId);
+			}
 			ps.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return newestId;
 	}
 	
 	
@@ -128,7 +134,7 @@ public class HomeworkDAO{
 	 */
 	public List<Homework> ListHomework(){
 		List<Homework> homeworks = new ArrayList<Homework>();
-		String sql = "select * from homework order by id desc";
+		String sql = "select * from homework";
 		PreparedStatement ps;
 		try {
 			ps = c.prepareStatement(sql);

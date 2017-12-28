@@ -35,7 +35,7 @@
                 </div>
                 <div class="checkbox">  
                   <label>  
-                    <input type="checkbox" name="remember-me" value="remember-me"> 记住我 
+                    <input type="checkbox" name="remember-me"> 记住我 
                   </label>  
                 </div>  
                 <div class="form-group">
@@ -46,7 +46,6 @@
                 </div>
               </form>  
             </div>
-            
           </div>
           <div class="signup-page">
               <div class="signin-head">
@@ -54,7 +53,7 @@
               <p>Welcome to M.A. System! Please Sign up!</p>
             </div>
             <hr>
-            <div class="signin-form">
+            <div class="signup-form">
               <form action="/MASystem/signup" method="post">
                 <div class="form-group">
                   <label for="new-studentid">学号</label>  
@@ -67,6 +66,13 @@
                 <div class="form-group">
                   <label for="new-password">密码</label>
                   <input type="password" id="new-password" name="new-password" class="form-control" placeholder="密码" required>  
+                </div>
+                <div class="form-group">
+                  <label for="user-type">类型</label>
+                  <select id="user-type" name="user-type">
+                    <option>学生</option>
+                    <option>老师</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>  
