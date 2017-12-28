@@ -218,6 +218,8 @@ nav ul, nav li{
     margin-bottom: 12px;
     opacity: 0.7;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 0
 }
 
 .hw-item a{
@@ -226,7 +228,17 @@ nav ul, nav li{
 
 .hw-item:hover{
     opacity: 1;
-    transform: scale(1.05);
+    /*transform: scale(1.05);*/
+}
+
+.item-content{
+    position: absolute; 
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background-color: white;
 }
 
 .hw-head{
@@ -419,4 +431,18 @@ nav ul, nav li{
 
 .user-hw-status{
     margin: 7.5px 0px;
+}
+
+.background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("../images/item-bg.png");
+    z-index: 10; 
+    bottom: -10px;
+    left: 10px; 
+}
+
+.highcharts-credits{
+    display: none;
 }

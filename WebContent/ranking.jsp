@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <script type="text/javascript" src="js/detail.js"></script>
   <script src="https://cdn.bootcss.com/highcharts/6.0.3/highcharts.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.js"></script>
 </head>
 <body>
   
@@ -28,7 +29,7 @@
             </a>
           </li>
           <li>
-            <a href="/MASystem/ranking">
+            <a href="/MASystem/ranking?hwId=${curHomework.id}">
               <i class="fa fa-pencil fa-lg"></i>
               <span class="nav-text">作业排名</span>
             </a>
@@ -86,17 +87,14 @@
             <div class="block-header">
               <span>作业排名</span>
               <span class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  作业1 
+                <a href="/MASystem/ranking?hwId=${curHomework.id}" class="dropdown-toggle" data-toggle="dropdown">
+                  作业${curHomework.id}
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">作业1</a></li>
-                  <li><a href="#">作业2</a></li>
-                  <li><a href="#">作业3</a></li>
-                  <li><a href="#">作业4</a></li>
-                  <li><a href="#">作业5</a></li>
-                  <li><a href="#">作业6</a></li>
+                  <c:forEach items="${homeworks}" var="homework">
+					          <li><a href="/MASystem/ranking?hwId=${homework.id}">作业${homework.id} </a></li>
+						      </c:forEach> 
                 </ul>
               </span>
             </div>
@@ -107,91 +105,19 @@
               <thead>
                 <tr>
                   <th>排名</th>
-                  <th>姓名</th>
+                  <th>学号</th>
                   <th>得分</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>孔令爽</td>
-                  <td>100</td>
-                </tr>
+                <c:forEach items="${homeworkItems}" var="homeworkItem" >
+					          <tr>
+		                  <td>${homeworkItem.rank }</td>
+		                  <td>${homeworkItem.studentId }</td>
+		                  <td>${homeworkItem.score }</td>
+		                </tr>
+					      </c:forEach>
+                
               </tbody>
             </table>
           </div>

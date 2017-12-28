@@ -27,7 +27,7 @@ public class HomeworkItemDAO {
 	}
 	
 	public void insert(HomeworkItem homeworkItem) {
-		String sql = "insert into homeworkitem values(null,?,?,?,?,?,?)";
+		String sql = "insert into homeworkitem values(null,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			//设置预编译参数
@@ -36,7 +36,8 @@ public class HomeworkItemDAO {
 			ps.setInt(3, homeworkItem.getScore());
 			ps.setString(4, homeworkItem.getFeedback());
 			ps.setInt(5, HomeworkItem.HomeworkStatus_NoSubmit);
-			ps.setString(6, "");
+			ps.setString(6, homeworkItem.getUploadURL());
+			ps.setInt(7,homeworkItem.getRank());
 			//执行
 			ps.execute();
 			ps.close();
@@ -93,6 +94,7 @@ public class HomeworkItemDAO {
 				String feedback = rs.getString(5);
 				int status = rs.getInt(6);
 				String uploadURL = rs.getString(7);
+				int rank = rs.getInt(8);
 				
 				hi.setId(id);
 				hi.setStudentId(studentId);
@@ -101,6 +103,7 @@ public class HomeworkItemDAO {
 				hi.setFeedback(feedback);
 				hi.setStatus(status);
 				hi.setUploadURL(uploadURL);
+				hi.setRank(rank);
 			}
 			ps.close();
 			
@@ -111,8 +114,42 @@ public class HomeworkItemDAO {
 		return hi;
 	}
 	
-	public List<HomeworkItem> homeworkItemList() {
-		return null;
+	public List<HomeworkItem> homeworkItemList(String sid) {
+		List<HomeworkItem> homeworks = new ArrayList<HomeworkItem>();
+		String sql = "select * from homeworkitem where studentId = ? and score != 0";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, sid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				HomeworkItem hi = new HomeworkItem();
+				int id = rs.getInt(1);
+				String studentid = rs.getString(2);
+				int hwId = rs.getInt(3);
+				int score = rs.getInt(4);
+				String feedback = rs.getString(5);
+				int status = rs.getInt(6);
+				String url = rs.getString(7);
+				int rank = rs.getInt(8);
+				
+				hi.setFeedback(feedback);
+				hi.setHwId(hwId);
+				hi.setId(id);
+				hi.setScore(score);
+				hi.setStatus(status);
+				hi.setStudentId(studentid);
+				hi.setUploadURL(url);
+				hi.setRank(rank);
+				
+				homeworks.add(hi);
+			}
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return homeworks;
 	}
 	
 	@Override
@@ -126,5 +163,44 @@ public class HomeworkItemDAO {
 			}
 		}
 		super.finalize();
+	}
+
+	public List<HomeworkItem> getHomeworkItemByHwId(int hwId) {
+		// TODO Auto-generated method stub
+		List<HomeworkItem> homeworks = new ArrayList<HomeworkItem>();
+		String sql = "select * from homeworkitem where hwId = ? order by rank asc";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, hwId);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				HomeworkItem hi = new HomeworkItem();
+				int id = rs.getInt(1);
+				String studentid = rs.getString(2);
+				int hwid = rs.getInt(3);
+				int score = rs.getInt(4);
+				String feedback = rs.getString(5);
+				int status = rs.getInt(6);
+				String url = rs.getString(7);
+				int rank = rs.getInt(8);
+				
+				hi.setFeedback(feedback);
+				hi.setHwId(hwid);
+				hi.setId(id);
+				hi.setScore(score);
+				hi.setStatus(status);
+				hi.setStudentId(studentid);
+				hi.setUploadURL(url);
+				hi.setRank(rank);
+				
+				homeworks.add(hi);
+			}
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return homeworks;
 	}
 }

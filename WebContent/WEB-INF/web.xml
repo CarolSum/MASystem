@@ -121,6 +121,27 @@
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/download</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetUserInfoServlet</servlet-name>
+    <servlet-class>servlets.GetUserInfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>GetUserInfoServlet</servlet-name>
+    <url-pattern>/getUserInfo</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>GetHomeworkInfoServlet</servlet-name>
+    <servlet-class>servlets.GetHomeworkInfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>GetHomeworkInfoServlet</servlet-name>
+    <url-pattern>/getHomeworkInfo</url-pattern>
+  </servlet-mapping>
+	
 	
 	<filter>
 		<filter-name>AuthFilter</filter-name>

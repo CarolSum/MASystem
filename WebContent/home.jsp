@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <script type="text/javascript" src="js/home.js"></script>
   <script src="https://cdn.bootcss.com/highcharts/6.0.3/highcharts.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.js"></script>
 </head>
 <body>
  	
@@ -28,7 +29,7 @@
             </a>
           </li>
           <li>
-            <a href="/MASystem/ranking">
+            <a href="/MASystem/ranking?hwId=${curHomework.id}">
               <i class="fa fa-pencil fa-lg"></i>
               <span class="nav-text">作业排名</span>
             </a>
@@ -101,18 +102,21 @@
       </div>
       <c:forEach items="${homeworks}" var="homework" varStatus="st">
           <div class="hw-item">
-            <a href="/MASystem/homework-detail?id=${homework.id}">
-	            <div class="hw-head">
-	              作业 ${homework.id}
-	            </div>
-	            <div class="hw-detail">
-	               ${homework.title}
-	            </div>
-	            <div class="hw-status">
-	              <span class="start-time">开始时间： ${homework.startDate}</span>
-	              <span class="end-time">截止时间：${homework.endDate}</span>
-	            </div>
-             </a>
+            <div class="item-content">
+              <a href="/MASystem/homework-detail?id=${homework.id}">
+                <div class="hw-head">
+                  作业 ${homework.id}
+                </div>
+                <div class="hw-detail">
+                   ${homework.title}
+                </div>
+                <div class="hw-status">
+                  <span class="start-time">开始时间： ${homework.startDate}</span>
+                  <span class="end-time">截止时间：${homework.endDate}</span>
+                </div>
+               </a>
+            </div>
+            <div class="background"></div>
 		       </div>
       </c:forEach>
 

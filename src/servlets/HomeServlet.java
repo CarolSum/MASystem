@@ -17,6 +17,7 @@ public class HomeServlet extends HttpServlet {
 		 HomeworkDAO hd = new HomeworkDAO();
 		 List<Homework> homeworks = hd.ListHomework();
 		 request.getSession().setAttribute("homeworks", homeworks);
+		 request.getSession().setAttribute("curHomework", homeworks.get(0));
 		 try {
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		} catch (ServletException e) {

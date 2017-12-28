@@ -12,7 +12,6 @@
   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/home.css">
-  <script type="text/javascript" src="js/home.js"></script>
   <script src="https://cdn.bootcss.com/highcharts/6.0.3/highcharts.js"></script>
 </head>
 <body>
@@ -28,7 +27,7 @@
             </a>
           </li>
           <li>
-            <a href="/MASystem/ranking">
+            <a href="/MASystem/ranking?hwId=${curHomework.id}">
               <i class="fa fa-pencil fa-lg"></i>
               <span class="nav-text">作业排名</span>
             </a>

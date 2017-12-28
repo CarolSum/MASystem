@@ -30,7 +30,7 @@
             </a>
           </li>
           <li>
-            <a href="/MASystem/ranking">
+            <a href="/MASystem/ranking?hwId=${curHomework.id}">
               <i class="fa fa-pencil fa-lg"></i>
               <span class="nav-text">作业排名</span>
             </a>

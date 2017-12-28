@@ -12,7 +12,17 @@ public class HomeworkItem {
 	private String feedback;
 	private int status;
 	private String uploadURL;
+	private int rank;
 	
+	
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	public String getUploadURL() {
 		return uploadURL;
 	}
@@ -35,6 +45,7 @@ public class HomeworkItem {
 		this.studentId = studentId;
 		this.hwId = hwId;
 		this.status = HomeworkStatus_NoSubmit;
+		this.score = 0;
 	}
 	
 	public int getId() {
