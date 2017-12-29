@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Message;
 import models.MessageDAO;
+import models.User;
 
 public class NotifyServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{    
 		response.setContentType("text/html; charset=UTF-8");
+		User user = (User) request.getSession().getAttribute("user");
 		MessageDAO md = new MessageDAO();
-		List<Message> messages = md.ListMessages();
+		List<Message> messages = md.ListMessages(user.getName());
 		request.getSession().setAttribute("messages", messages);
 		try {
 			request.getRequestDispatcher("notification.jsp").forward(request, response);

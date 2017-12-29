@@ -12,7 +12,6 @@
   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/home.css">
-  <script type="text/javascript" src="js/home.js"></script>
   <script src="https://cdn.bootcss.com/highcharts/6.0.3/highcharts.js"></script>
 </head>
 <body>
@@ -46,6 +45,12 @@
                 <span class="nav-text">发布作业</span>
               </a>
             </li>
+            <li>
+            <a href="/MASystem/checkHomework?hwId=${curHomework.id}">
+              <i class="fa fa-check-square-o fa-lg"></i>
+              <span class="nav-text">批改作业</span>
+            </a>
+          </li>
           </c:if>
         </ul>
         <ul class="logout">

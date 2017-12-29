@@ -190,4 +190,40 @@ public class UserDAO {
 		
 		return user;
 	}
+
+
+	/**
+	 * 取得所有老师，目前只实现一位老师
+	 * @return
+	 */
+	public User getTeacher() {
+		List<User> teachers = new ArrayList<User>();
+		String sql = "select * from user where type = 1";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				User teacher = new User();
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				String password = rs.getString(3);
+				String sid = rs.getString(4);
+				int type = rs.getInt(5);
+				
+				teacher.setId(id);
+				teacher.setSid(sid);
+				teacher.setName(name);
+				teacher.setPassword(password);
+				teacher.setType(type);
+							
+				teachers.add(teacher);
+			}
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return teachers.get(0);
+	}
 }

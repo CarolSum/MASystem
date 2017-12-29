@@ -31,13 +31,14 @@ public class MessageDAO{
 	 * @param homework
 	 */
 	public void insert(Message message) {
-		String sql = "insert into messages values(null,?,?,?)";
+		String sql = "insert into messages values(null,?,?,?,?)";
 		try {
 			PreparedStatement ps = c.prepareStatement(sql);
 			//设置预编译参数
 			ps.setString(1, message.getOwner());
 			ps.setString(2, message.getMsg());
 			ps.setString(3, message.getDate());
+			ps.setString(4, message.getReceiver());
 			//执行
 			ps.execute();
 			ps.close();
@@ -61,23 +62,27 @@ public class MessageDAO{
 		super.finalize();
 	}
 
-	public List<Message> ListMessages() {
+	public List<Message> ListMessages(String username) {
 		List<Message> messages = new ArrayList<Message>();
-		String sql = "select * from messages order by date desc";
+		String sql = "select * from messages where receiver = ? order by date desc ";
 		PreparedStatement ps;
 		try {
 			ps = c.prepareStatement(sql);
+			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Message message = new Message();
 				int id = rs.getInt(1);
 				String owner = rs.getString(2);
 				String msg = rs.getString(3);
-				String date = rs.getString(4);				
+				String date = rs.getString(4);		
+				String receiver = rs.getString(5);
+				
 				message.setId(id);
 				message.setOwner(owner);
 				message.setMsg(msg);
 				message.setDate(date);
+				message.setReceiver(receiver);
 
 				messages.add(message);
 			}

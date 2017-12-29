@@ -6,7 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Publish</title>
+  <meta charset="utf-8">
+  <title>Check</title>
   <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -84,47 +85,66 @@
         </div>
       </div>
     </div>
-    <div class="dashboard">
-      <div class="main-block">
-        <div class="main-block-box">
+    <div class="dashboard row">
+      
+      <div class="checkHw-block">
+        <div class="checkHw-block-box">
           <div class="block-header">
-            <span>个人资料</span>
+            <span>评价作业</span>
+            <span class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  学号 
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <c:forEach items="${allStudentId}" var="sid">
+                    <li><a href="/MASystem/checkHomework?stId=${sid}">${sid} </a></li>
+                  </c:forEach> 
+                </ul>
+              </span>
+            <span class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  作业${curHomework.id}
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <c:forEach items="${homeworks}" var="homework">
+                    <li><a href="/MASystem/checkHomework?hwId=${homework.id}">作业${homework.id} </a></li>
+                  </c:forEach> 
+                </ul>
+              </span>
           </div>
-          <div class="edit-area">
-            <form class="form-horizontal" action="/MASystem/user-info" method="post">
-              <div class="form-group">
-              <label class="col-sm-2 control-label">学号</label>
-              <div class="col-sm-8">
-                <p class="form-control-static">16340118</p>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">姓名</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="name" name="name" placeholder="姓名" required value="${user.name}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password" class="col-sm-2 control-label">密码</label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" id="password" name="password" placeholder="密码" required value="${user.password}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="confirm-password" class="col-sm-2 control-label">确认密码</label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="确认密码" required value="${user.password}">
-              </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-8">
-                  <button type="submit" class="btn btn-primary">修改</button>
-                </div>
-              </div>
-            </form>
-          </div>
+          
+          <c:forEach items="${homeworkItems}" var="homeworkItem">
+            <div class="row hwItem">
+	            <form action="/MASystem/checkHomework?hiid=${homeworkItem.id}" method="post">
+	              <div class="col-sm-2">
+	                <div class="hwItemIntro">
+	                  <div>姓名：${homeworkItem.username}</div>
+	                  <div>学号：${homeworkItem.studentId}</div>
+	                  <div><a href="/MASystem/download?hiid=${homeworkItem.id}" class="btn btn-primary">查看下载</a></div>
+	                </div>
+	              </div>
+	              <div class="col-sm-8">
+	                <div class="feedback-block">
+	                  <textarea class="form-control" rows="3" id="feedback-content" name="feedback-content" placeholder="反馈信息" required>${homeworkItem.feedback}</textarea>
+	                </div>
+	                
+	              </div>
+	              <div class="col-sm-2">
+	                <div class="score-group">
+	                  <label for="score">分数: </label>
+	                  <input type="text" id="score" class="form-control" name="score" placeholder="评分" required value="${homeworkItem.score}">
+	                  <button type="submit" class="btn btn-primary score-submit">提交</button>
+	                </div>
+	              </div>
+	            </form>
+	          </div>
+          </c:forEach> 
+          
         </div>
       </div>
+
     </div>
   </div>
 </body>

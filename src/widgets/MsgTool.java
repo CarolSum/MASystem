@@ -8,7 +8,7 @@ import models.MessageDAO;
 
 public class MsgTool {
 
-	public static void send(String ownerName, String msg) {
+	public static void send(String ownerName, String msg, String receiver) {
 		// TODO Auto-generated method stub
 		 MessageDAO md = new MessageDAO();
 		 Message message = new Message();
@@ -19,6 +19,7 @@ public class MsgTool {
 		 message.setOwner(ownerName);
 		 message.setMsg(msg);
 		 message.setDate(dateString);
+		 message.setReceiver(receiver);
 		 md.insert(message);
 	}
 

@@ -45,6 +45,12 @@
                 <span class="nav-text">发布作业</span>
               </a>
             </li>
+            <li>
+            <a href="/MASystem/checkHomework?hwId=${curHomework.id}">
+              <i class="fa fa-check-square-o fa-lg"></i>
+              <span class="nav-text">批改作业</span>
+            </a>
+          </li>
           </c:if>
         </ul>
         <ul class="logout">

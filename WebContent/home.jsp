@@ -47,6 +47,12 @@
 	              <span class="nav-text">发布作业</span>
 	            </a>
 	          </li>
+            <li>
+            <a href="/MASystem/checkHomework?hwId=${curHomework.id}">
+              <i class="fa fa-check-square-o fa-lg"></i>
+              <span class="nav-text">批改作业</span>
+            </a>
+          </li>
           </c:if>
         </ul>
         <ul class="logout">
@@ -81,22 +87,24 @@
       </div>
     </div>
     <div class="dashboard">
-      <div class="chart-block">
-        <div class="result-chart">
-          <div class="chart-head">我的成绩</div>
-          <div class="chart">
-            <div id="score-chart"></div>
-          </div>
-        </div>
-      </div>
-      <div class="chart-block">
-        <div class="ranking-chart">
-          <div class="chart-head">我的排名</div>
-          <div class="chart">
-            <div id="rank-chart"></div>
-          </div>
-        </div>
-      </div>
+      <c:if test="${user.type == 0}">
+         <div class="chart-block">
+	        <div class="result-chart">
+	          <div class="chart-head">我的成绩</div>
+	          <div class="chart">
+	            <div id="score-chart"></div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="chart-block">
+	        <div class="ranking-chart">
+	          <div class="chart-head">我的排名</div>
+	          <div class="chart">
+	            <div id="rank-chart"></div>
+	          </div>
+	        </div>
+	      </div> 
+      </c:if>
       <div id="homework-list-title">
         作业列表
       </div>

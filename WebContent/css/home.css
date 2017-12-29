@@ -355,6 +355,17 @@ nav ul, nav li{
     box-shadow: 0px 1px 4px 2px #aaaaaa;
 }
 
+.checkHw-block{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px; 
+}
+
+.checkHw-block-box{
+    box-shadow: 0px 1px 4px 2px #aaaaaa;
+}
+
+
 .msg-item{
     height: 80px;
     background-color: white;
@@ -380,7 +391,7 @@ nav ul, nav li{
     color: #337ac7;
 }
 
-.main-block-box .row{
+.main-block-box .row, .checkHw-block-box .row{
     margin-left: 0;
     margin-right: 0;
 }
@@ -445,4 +456,58 @@ nav ul, nav li{
 
 .highcharts-credits{
     display: none;
+}
+
+.hwItem{
+    min-height: 100px;
+    border-bottom: 1px solid #ddd;
+}
+
+.hwItem .col-sm-8,.hwItem .col-sm-2{
+    padding: 0;
+}
+
+.hwItem .form-control{
+    width: 100px;
+    display: inline-block;
+}
+
+.score-group{
+    margin: 20px 20px;
+}
+
+.score-submit{
+    width: 135px;
+    margin-top: 10px;
+}
+
+.feedback-block{
+    margin: 20px 30px;
+}
+
+#feedback-content{
+    width: 100%;
+}
+
+.hwItemIntro{
+    padding: 10px 0;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.hwItemIntro div{
+    font-size: 15px;
+    line-height: 30px;
+    padding-left: 30px;
+    margin: 2px 0;
+}
+
+.dropdown{
+    margin-right: 20px;
+}
+
+.proposal{
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 20px;
 }

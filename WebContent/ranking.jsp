@@ -47,6 +47,12 @@
                 <span class="nav-text">发布作业</span>
               </a>
             </li>
+            <li>
+            <a href="/MASystem/checkHomework?hwId=${curHomework.id}">
+              <i class="fa fa-check-square-o fa-lg"></i>
+              <span class="nav-text">批改作业</span>
+            </a>
+          </li>
           </c:if>
         </ul>
         <ul class="logout">
@@ -105,7 +111,7 @@
               <thead>
                 <tr>
                   <th>排名</th>
-                  <th>学号</th>
+                  <th>姓名</th>
                   <th>得分</th>
                 </tr>
               </thead>
@@ -113,7 +119,7 @@
                 <c:forEach items="${homeworkItems}" var="homeworkItem" >
 					          <tr>
 		                  <td>${homeworkItem.rank }</td>
-		                  <td>${homeworkItem.studentId }</td>
+		                  <td>${homeworkItem.username }</td>
 		                  <td>${homeworkItem.score }</td>
 		                </tr>
 					      </c:forEach>

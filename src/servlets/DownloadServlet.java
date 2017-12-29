@@ -12,13 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.HomeworkItem;
+import models.HomeworkItemDAO;
 
 public class DownloadServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)  
             throws ServletException, IOException {  
-		String hiid = request.getParameter("hiid");
+		HomeworkItemDAO hid = new HomeworkItemDAO();
+		int hiid = Integer.parseInt(request.getParameter("hiid"));
 		System.out.println(hiid);
-		HomeworkItem hi = (HomeworkItem) request.getSession().getAttribute("curHomeworkItem");
+		HomeworkItem hi =  hid.getHomeworkItemByHiId(hiid);
+//		(HomeworkItem) request.getSession().getAttribute("curHomeworkItem");
 		System.out.println(hi.getUploadURL());
 			
         //¥¶¿Ì«Î«Û  

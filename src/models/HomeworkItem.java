@@ -2,6 +2,7 @@ package models;
 
 public class HomeworkItem {
 	
+	public static int HomeworkStatus_HasFinished = 2;
 	public static int HomeworkStatus_HasSubmit = 1;
 	public static int HomeworkStatus_NoSubmit = 0;
 	
@@ -13,8 +14,17 @@ public class HomeworkItem {
 	private int status;
 	private String uploadURL;
 	private int rank;
+	private String username;
 	
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public int getRank() {
 		return rank;
 	}
@@ -39,13 +49,15 @@ public class HomeworkItem {
 		this.status = status;
 	}
 
-	public HomeworkItem() {}
+	public HomeworkItem(){}
 	
-	public HomeworkItem(String studentId, int hwId) {
+	
+	public HomeworkItem(String studentId, int hwId, String username) {
 		this.studentId = studentId;
 		this.hwId = hwId;
 		this.status = HomeworkStatus_NoSubmit;
 		this.score = 0;
+		this.username = username;
 	}
 	
 	public int getId() {

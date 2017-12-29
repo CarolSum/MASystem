@@ -5,9 +5,15 @@ public class Message {
 	private String Owner;
 	private String msg;
 	private String date;
+	private String receiver;
 	
 	
-	
+	public String getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
 	public int getId() {
 		return id;
 	}

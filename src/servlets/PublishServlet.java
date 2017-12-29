@@ -59,14 +59,13 @@ public class PublishServlet extends HttpServlet {
 		 hw.setId(newId);
 		 List<User> users = ud.studentList();
 		 for(User user: users) {
-			 HomeworkItem hi = new HomeworkItem(user.getSid(), hw.getId());
+			 HomeworkItem hi = new HomeworkItem(user.getSid(), hw.getId(), user.getName());
 			 hid.insert(hi);
+			 //创建新消息
+			 MsgTool.send(curUser.getName(), "新作业已发布~立个小目标吧，比如打他个100分~~", user.getName());
 		 }
 		 
-		 /**
-		  * 创建新消息
-		  */
-		 MsgTool.send(curUser.getName(), "新作业已发布~立个小目标吧，比如打他个100分~~");
+		 
 		 
 		 System.out.println("发布作业成功");
 		 response.sendRedirect("/MASystem/home");

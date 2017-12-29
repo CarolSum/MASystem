@@ -21,6 +21,7 @@ import models.Homework;
 import models.HomeworkItem;
 import models.HomeworkItemDAO;
 import models.User;
+import models.UserDAO;
 import widgets.MsgTool;
 
 
@@ -122,8 +123,11 @@ public class UploadServlet extends HttpServlet {
 	        
 	        System.out.println(filePath.substring(filePath.lastIndexOf("\\")+1));
 	        
+	        UserDAO ud = new UserDAO();
+	        User teacher = ud.getTeacher();
+	        
 	        //发送上传作业成功消息~
-	        MsgTool.send(user.getName(), "作业"+homework.getId()+"已提交~请查收>.<");
+	        MsgTool.send(user.getName(), "作业"+homework.getId()+"已提交~请查收>.<", teacher.getName());
 	        
 	        // 跳转到 homework-detail.jsp
 	        request.getRequestDispatcher("homework-detail.jsp").forward(request, response);
