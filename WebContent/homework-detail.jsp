@@ -58,9 +58,13 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
-              <span class="nav-text">你好, ${user.name}</span>
+              <span class="nav-text">修改资料</span>
             </a>
           </li>  
           <li>
@@ -76,74 +80,62 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
           <h1>欢迎回来，${user.name}</h1>
         </div>
       </div>
     </div>
+    <div class="module-title">
+                      作业 ${curHomework.id}
+      <c:if test="${curHomeworkItem.status == 0}">
+         <span class="user-hw-status">状态：未提交</span>
+       </c:if>
+       <c:if test="${curHomeworkItem.status == 1}">
+         <span class="user-hw-status">状态：已提交 <button class="btn btn-primary" id="download-hw"><a href="/MASystem/download?hiid=${curHomeworkItem.id} ">查看下载</a></button></span>
+       </c:if>
+       <c:if test="${curHomeworkItem.status == 2}">
+         <span class="user-hw-status">状态：已结束 <button class="btn btn-primary" id="download-hw"><a href="/MASystem/download?hiid=${curHomeworkItem.id} ">查看下载</a></button></span>
+       </c:if>
+       <c:if test="${user.type == 1}">
+         <span class="user-hw-status">
+           &nbsp<button class="btn btn-primary" id="modify-hw"><a href="/MASystem/homework-modify?hwId=${curHomework.id} ">修改</a></button>
+         </span>
+       </c:if>
+    </div>
     <div class="dashboard">
       <div class="main-block">
         <div class="main-block-box">
-          <div class="block-header">
-            <span>作业 ${curHomework.id}</span>
-            <c:if test="${curHomeworkItem.status == 0}">
-              <span class="user-hw-status">状态：未提交</span>
-            </c:if>
-            <c:if test="${curHomeworkItem.status == 1}">
-              <span class="user-hw-status">状态：已提交 <button class="btn btn-primary" id="download-hw"><a href="/MASystem/download?hiid=${curHomeworkItem.id} ">查看下载</a></button></span>
-            </c:if>
-            <c:if test="${curHomeworkItem.status == 2}">
-              <span class="user-hw-status">状态：已结束 <button class="btn btn-primary" id="download-hw"><a href="/MASystem/download?hiid=${curHomeworkItem.id} ">查看下载</a></button></span>
-            </c:if>
-            <c:if test="${user.type == 1}">
-              <span class="user-hw-status">
-	              &nbsp<button class="btn btn-primary" id="modify-hw"><a href="/MASystem/homework-modify?hwId=${curHomework.id} ">修改</a></button>
-	            </span>
-            </c:if>
-          </div>
           <div class="hw-content">
             <div class="row">
-              <div class="col-md-2">Title: </div>
+              <div class="col-md-2">题目: </div>
               <div class="col-md-10">${curHomework.title}</div>
             </div>
             <div class="row">
-              <div class="col-md-2">Start Date: </div>
+              <div class="col-md-2">开始日期: </div>
               <div class="col-md-10">${curHomework.startDate}</div>
             </div>
             <div class="row">
-              <div class="col-md-2">End Date: </div>
+              <div class="col-md-2">结束日期: </div>
               <div class="col-md-10">${curHomework.endDate}</div>
             </div>
             <div class="row">
-              <div class="col-md-2">Content: </div>
+              <div class="col-md-2">具体内容: </div>
               <div class="col-md-10"> ${curHomework.content}</div>
             </div>
-
-            <!-- <form id="upload-hw" action="/MASystem/upload" method="post"  enctype="multipart/form-data">
-              <div class="upload-head">提交作业</div>
-              <div class="upload-group">
-                <div class="file-loading">
-                  <input id="file" name="file" multiple type="file" class="file" data-allowed-file-extensions='["rar", "txt"]' data-show-preview="false" data-el-error-container='#err' data-upload-url='/MASystem/upload' data-show-caption="true">
-                </div>
-                <div id="err"></div>
-              </div>
-            </form> -->
             
             <c:if test="${curHomeworkItem.status != 2}">
-              <form method="post" action="/MASystem/upload" enctype="multipart/form-data">
-	                                                          选择一个文件:
-	                <input type="file" name="uploadFile" />
-	                <br/><br/>
-	                <input type="submit" value="上传" />
-	            </form>
+              <div class="row">
+                <div class="col-md-2">提交作业</div>
+                <div class="col-md-10">
+                  <form method="post" action="/MASystem/upload" enctype="multipart/form-data">
+                      <input type="file" name="uploadFile" id="uploadFile"/>
+                      <button type="submit" class="btn btn-primary">上传</button>
+                  </form>
+                </div>
+              </div>
+              
             </c:if>
-            <<c:if test="${curHomeworkItem.status == 2}">
+            <c:if test="${curHomeworkItem.status == 2}">
               <div class="proposal">
 	              <div class="row">
 	                <div class="col-md-2">得分情况: </div>

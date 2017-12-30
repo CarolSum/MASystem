@@ -55,9 +55,13 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
-              <span class="nav-text">你好, ${user.name}</span>
+              <span class="nav-text">修改资料</span>
             </a>
           </li>  
           <li>
@@ -73,45 +77,37 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
           <h1>欢迎回来，${user.name}</h1>
         </div>
       </div>
     </div>
+    <div class="module-title">发布新作业</div>
     <div class="dashboard">
       <div class="main-block">
         <div class="main-block-box">
-          <div class="block-header">
-            <span>发布新作业</span>
-          </div>
           <div class="edit-area">
             <form class="form-horizontal" action="/MASystem/publish" method="post">
             <div class="form-group">
-              <label for="hw-title" class="col-sm-2 control-label">作业标题</label>
+              <label for="hw-title" class="col-sm-2 control-label">作业标题:</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hw-title" name= "hw-title" placeholder="请输入作业标题" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="hw-start-time" class="col-sm-2 control-label">起始时间</label>
+              <label for="hw-start-time" class="col-sm-2 control-label">起始时间:</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hw-start-time" name="hw-start-time" placeholder="YYYY:MM:DD" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="hw-end-time" class="col-sm-2 control-label">截止时间</label>
+              <label for="hw-end-time" class="col-sm-2 control-label">截止时间:</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="hw-end-time" name="hw-end-time" placeholder="YYYY:MM:DD" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="new-hw-content" class="col-sm-2 control-label">内容</label>
+              <label for="new-hw-content" class="col-sm-2 control-label">内容:</label>
               <div class="col-sm-8">
                 <textarea class="form-control" rows="10" id="new-hw-content" name="new-hw-content" placeholder="请输入作业内容" required></textarea>
               </div>

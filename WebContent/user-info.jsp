@@ -55,9 +55,13 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
-              <span class="nav-text">你好, ${user.name}</span>
+              <span class="nav-text">修改资料</span>
             </a>
           </li>  
           <li>
@@ -73,51 +77,48 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
-          <h1>欢迎回来，${user.name}</h1>
+          <h1>个人资料</h1>
         </div>
       </div>
     </div>
-    <div class="dashboard">
-      <div class="main-block">
-        <div class="main-block-box">
-          <div class="block-header">
-            <span>个人资料</span>
-          </div>
+    <div class="circle"></div>
+    <div class="avatar"></div>
+    <div class="userboard">
+      <div class="user-block">
+        <div class="user-block-box">
           <div class="edit-area">
             <form class="form-horizontal" action="/MASystem/user-info" method="post">
               <div class="form-group">
+              <div class="col-sm-1"></div>
               <label class="col-sm-2 control-label">学号</label>
               <div class="col-sm-8">
-                <p class="form-control-static">16340118</p>
+                <p class="form-control-static">${user.sid}</p>
               </div>
             </div>
             <div class="form-group">
+              <div class="col-sm-1"></div>
               <label for="name" class="col-sm-2 control-label">姓名</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="name" name="name" placeholder="姓名" required value="${user.name}">
               </div>
             </div>
             <div class="form-group">
+              <div class="col-sm-1"></div>
               <label for="password" class="col-sm-2 control-label">密码</label>
               <div class="col-sm-8">
                 <input type="password" class="form-control" id="password" name="password" placeholder="密码" required value="${user.password}">
               </div>
             </div>
             <div class="form-group">
+              <div class="col-sm-1"></div>
               <label for="confirm-password" class="col-sm-2 control-label">确认密码</label>
               <div class="col-sm-8">
                 <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="确认密码" required value="${user.password}">
               </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-8">
+                <div class="col-sm-offset-3 col-sm-8">
                   <button type="submit" class="btn btn-primary">修改</button>
                 </div>
               </div>

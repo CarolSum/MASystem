@@ -56,6 +56,10 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
               <span class="nav-text">你好, ${user.name}</span>
@@ -74,46 +78,40 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
           <h1>欢迎回来，${user.name}</h1>
         </div>
       </div>
     </div>
+    <div class="module-title">
+                    评价作业
+      <span class="dropdown">
+	       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                                    学号 
+	         <b class="caret"></b>
+	       </a>
+	       <ul class="dropdown-menu">
+	         <c:forEach items="${allStudentId}" var="sid">
+	           <li><a href="/MASystem/checkHomework?stId=${sid}">${sid} </a></li>
+	         </c:forEach> 
+	       </ul>
+	     </span>
+	   <span class="dropdown">
+	       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                                         作业${curHomework.id}
+	         <b class="caret"></b>
+	       </a>
+	       <ul class="dropdown-menu">
+	         <c:forEach items="${homeworks}" var="homework">
+	           <li><a href="/MASystem/checkHomework?hwId=${homework.id}">作业${homework.id} </a></li>
+	         </c:forEach> 
+	       </ul>
+	     </span>
+    </div>
     <div class="dashboard row">
       
       <div class="checkHw-block">
         <div class="checkHw-block-box">
-          <div class="block-header">
-            <span>评价作业</span>
-            <span class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  学号 
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <c:forEach items="${allStudentId}" var="sid">
-                    <li><a href="/MASystem/checkHomework?stId=${sid}">${sid} </a></li>
-                  </c:forEach> 
-                </ul>
-              </span>
-            <span class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  作业${curHomework.id}
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <c:forEach items="${homeworks}" var="homework">
-                    <li><a href="/MASystem/checkHomework?hwId=${homework.id}">作业${homework.id} </a></li>
-                  </c:forEach> 
-                </ul>
-              </span>
-          </div>
           
           <c:forEach items="${homeworkItems}" var="homeworkItem">
             <div class="row hwItem">

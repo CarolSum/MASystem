@@ -57,9 +57,13 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
-              <span class="nav-text">你好, ${user.name}</span>
+              <span class="nav-text">修改资料</span>
             </a>
           </li>  
           <li>
@@ -75,12 +79,6 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
           <h1>欢迎回来，${user.name}</h1>
         </div>

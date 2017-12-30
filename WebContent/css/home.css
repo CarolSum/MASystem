@@ -128,7 +128,9 @@ nav ul, nav li{
 .content-body{
     padding-left: 55px;
     width: 100%;
-    background: url('../images/z3311.jpg');
+    background: url('../images/background.png');
+    background-size: 100% 100%;
+    background-position: 50% 100%;
 }
 
 .content-header{
@@ -138,7 +140,10 @@ nav ul, nav li{
 }
 
 .block{
-    height: 50%;
+    height: 70%;
+    background: url('../images/banner-logo.png') no-repeat;
+    background-size: 128px 128px;
+    background-position: 50%;
 }
 
 .header-info{
@@ -154,31 +159,53 @@ nav ul, nav li{
     margin-top: 10px;
     font-size: 30px;
     margin-left: 13px;
-    color: #666;
+    color: white;
 }
+
 
 /*面包屑导航分割线颜色*/
 .breadcrumb>li+li:before{
-    color: #000;
+    color: white;
 }
 
 .dashboard{
     padding: 12px;
     min-height: 749px;
     background-color: #F7F7F7;
+    background-image: url('../images/mountain.png');
+    background-position: 100% 50%;
     margin: 0;
 }
+
+.homeboard{
+    padding: 12px;
+    min-height: 749px;
+    background-color: #F7F7F7;
+    margin: 0;
+}
+
+.userboard{
+    margin: 12px 50px;
+    min-height: 719px;
+    background-color: #F7F7F7;
+    background-image: url('../images/mountain.png');
+    background-position: 100% 50%;
+    border-radius: 20px;
+    box-shadow:0 0 15px #333 inset;
+}
+
 .chart-block{
     display: inline-block;
     width: 49%;
-    height: 384px;
+    min-height: 384px;
     margin-left: .5%;
     background-color: #777;
 }
 
 .result-chart, .ranking-chart{
     padding: 12px;
-    height: 384px;
+    padding-right: 40px;
+    min-height: 384px;
     width: 100%;
     display: inline-block;
     background-color: #eee;
@@ -188,7 +215,15 @@ nav ul, nav li{
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 0.005em;
-    margin-bottom: 12px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    color: #fff;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background:url('../images/hw-list-title.png') 30%;
+    background-size: 100% 100%;
 }
 
 .chart{
@@ -198,12 +233,26 @@ nav ul, nav li{
     box-shadow: 0px 2px 7px 1px #aaaaaa;
 }
 
+.charts{
+    background-color: #eee;
+}
+
+.homework-list{
+    margin-top: 50px;
+}
+
 #homework-list-title{
+    position: relative;
+    left: 20px;
     font-size: 20px;
-    height: 62px;
-    width: 100%;
-    padding-left: 15px;
-    line-height: 62px;
+    height: 50px;
+    width: 10%;
+    line-height: 50px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background:url('../images/hw-list-title.png') 30%;
+    background-size: 100% 100%;
 }
 
 .hw-item{
@@ -212,10 +261,10 @@ nav ul, nav li{
     height: 231px;
     background-color: white;
     box-shadow: 0px 2px 4px .5px #aaaaaa;
-    margin-left: 15px;
+    margin-left: 150px;
     display: inline-block;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     opacity: 0.7;
     transition: all 0.3s ease;
     position: relative;
@@ -353,17 +402,48 @@ nav ul, nav li{
 
 .main-block-box{
     box-shadow: 0px 1px 4px 2px #aaaaaa;
+    border-radius: 20px;
+    background: url('../images/card.png') no-repeat;
+    background-size: 200% 200%;
+    background-position: 90% 10%;
 }
+
+.msg-block{
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px; 
+}
+
+.msg-block-box{
+    box-shadow: 0px 1px 4px 2px #aaaaaa;
+    border-radius: 20px;
+    padding: 30px 0;
+    background-color: white;
+}
+
+
+
+.user-block{
+    padding: 150px 0px;
+}
+
+.user-block-box{
+    box-shadow: 0px 1px 4px 2px #aaaaaa;
+    border-radius: 20px;
+    background: url('../images/background.png') no-repeat;
+    background-position: 100% 0%;
+    width: 550px;
+    height: 340px;
+    margin: 0 auto;
+}
+
 
 .checkHw-block{
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 30px; 
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px; 
 }
 
-.checkHw-block-box{
-    box-shadow: 0px 1px 4px 2px #aaaaaa;
-}
 
 
 .msg-item{
@@ -391,7 +471,7 @@ nav ul, nav li{
     color: #337ac7;
 }
 
-.main-block-box .row, .checkHw-block-box .row{
+.main-block-box .row, .checkHw-block-box .row, .msg-block-box .row{
     margin-left: 0;
     margin-right: 0;
 }
@@ -440,10 +520,6 @@ nav ul, nav li{
     color: white;
 }
 
-.user-hw-status{
-    margin: 7.5px 0px;
-}
-
 .background{
     position: absolute;
     width: 100%;
@@ -460,7 +536,11 @@ nav ul, nav li{
 
 .hwItem{
     min-height: 100px;
-    border-bottom: 1px solid #ddd;
+    background: url('../images/card.png') no-repeat;
+    background-position: 90% 70%;
+    margin-bottom: 70px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 3px #aaaaaa;
 }
 
 .hwItem .col-sm-8,.hwItem .col-sm-2{
@@ -479,6 +559,7 @@ nav ul, nav li{
 .score-submit{
     width: 135px;
     margin-top: 10px;
+    display: block;
 }
 
 .feedback-block{
@@ -503,11 +584,110 @@ nav ul, nav li{
 }
 
 .dropdown{
-    margin-right: 20px;
+    margin-right: 50px;
 }
 
 .proposal{
     border-top: 1px solid #ddd;
     margin-top: 20px;
     padding-top: 20px;
+}
+
+#logo-name{
+    display: inline-block;
+    height: 41px;
+    position: relative;
+    left: 10px;
+    bottom: 13px;
+    font-size: 16px;
+    color: #4e5b71;
+}
+
+#logo{
+    width: 41px;
+    height: 41px;
+    display: inline-block;
+    position: relative;
+    left: 8px;
+   
+    padding-left: 5px;
+    background: url('../images/logo.png') no-repeat;
+    background-size: 41px 41px;
+}
+
+.module-title{
+    background-color: #fff;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 550;
+    padding-left: 30px;
+    box-shadow: 0 5px 50px -5px #aaa;
+    position: relative;
+}
+
+.edit-area label{
+    font-size: 16px;
+}
+
+.btn-primary{
+    background-color: #8886b0;
+    border-color: #8886b0;
+    border-radius: 20px;
+    width: 100px;
+}
+
+.btn-primary:hover{
+    background-color: #77759a;
+     border-color: #77759a;
+}
+
+.dropdown a{
+    color: #5a5a7f;
+}
+
+
+.hwItem .btn-primary{
+    background-color: #c0d9ec;
+    border-color: #c0d9ec;
+    border-radius: 20px;
+    width: 100px;
+}
+
+.hwItem .btn-primary:hover{
+    background-color: #95a5b2;
+    border-color: #95a5b2;
+}
+
+#uploadFile{
+    display: inline-block;
+    text-decoration: none;
+    line-height: 30px;
+}
+
+.circle{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    border-radius: 100px 100px 0 0;
+    background-color: white;
+    left: 44.7%;
+    top: 137px;
+    z-index: 0;
+    box-shadow:0px 0px 15px #999 inset; 
+    background-image: url('../images/mountain.png');
+}
+
+.avatar{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    left: 45.8%;
+    top: 157px;
+    z-index: 0;
+    background-image: url('../images/avatar2.png');
+    background-size: 240px 200px;
+    background-position: 50% 40%;
 }

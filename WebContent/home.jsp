@@ -57,9 +57,13 @@
         </ul>
         <ul class="logout">
           <li>
+            <div id="logo"></div>
+            <div id="logo-name">My Achievement</div>
+          </li>
+          <li>
             <a href="/MASystem/user-info">
               <i class="fa fa-user-circle fa-lg"></i>
-              <span class="nav-text">你好, ${user.name}</span>
+              <span class="nav-text">修改资料</span>
             </a>
           </li>  
           <li>
@@ -75,60 +79,57 @@
     <div class="content-header">
       <div class="header-info">
         <div class="block"></div>
-        <div id="breadcrumb-bar">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">作业概况</li>
-          </ol>
-        </div>
         <div id="welcome">
           <h1>欢迎回来，${user.name}</h1>
         </div>
       </div>
     </div>
-    <div class="dashboard">
+    <div class="homeboard">
       <c:if test="${user.type == 0}">
-         <div class="chart-block">
-	        <div class="result-chart">
-	          <div class="chart-head">我的成绩</div>
-	          <div class="chart">
-	            <div id="score-chart"></div>
+        <div class="charts">
+          <div class="chart-block">
+	          <div class="result-chart">
+	            <div class="chart-head">我的成绩</div>
+	            <div class="chart">
+	              <div id="score-chart"></div>
+	            </div>
 	          </div>
 	        </div>
-	      </div>
-	      <div class="chart-block">
-	        <div class="ranking-chart">
-	          <div class="chart-head">我的排名</div>
-	          <div class="chart">
-	            <div id="rank-chart"></div>
+	        <div class="chart-block">
+	          <div class="ranking-chart">
+	            <div class="chart-head">我的排名</div>
+	            <div class="chart">
+	              <div id="rank-chart"></div>
+	            </div>
 	          </div>
 	        </div>
-	      </div> 
+        </div>
       </c:if>
-      <div id="homework-list-title">
-        作业列表
+      <div class="homework-list">
+        <div id="homework-list-title">
+	        作业列表
+	      </div>
+	      <c:forEach items="${homeworks}" var="homework" varStatus="st">
+	          <div class="hw-item">
+	            <div class="item-content">
+	              <a href="/MASystem/homework-detail?id=${homework.id}">
+	                <div class="hw-head">
+	                  作业 ${homework.id}
+	                </div>
+	                <div class="hw-detail">
+	                   ${homework.title}
+	                </div>
+	                <div class="hw-status">
+	                  <span class="start-time">开始时间： ${homework.startDate}</span>
+	                  <span class="end-time">截止时间：${homework.endDate}</span>
+	                </div>
+	               </a>
+	            </div>
+	            <div class="background"></div>
+	           </div>
+	      </c:forEach>
+        </div>
       </div>
-      <c:forEach items="${homeworks}" var="homework" varStatus="st">
-          <div class="hw-item">
-            <div class="item-content">
-              <a href="/MASystem/homework-detail?id=${homework.id}">
-                <div class="hw-head">
-                  作业 ${homework.id}
-                </div>
-                <div class="hw-detail">
-                   ${homework.title}
-                </div>
-                <div class="hw-status">
-                  <span class="start-time">开始时间： ${homework.startDate}</span>
-                  <span class="end-time">截止时间：${homework.endDate}</span>
-                </div>
-               </a>
-            </div>
-            <div class="background"></div>
-		       </div>
-      </c:forEach>
-
-    </div>
   </div>
 </body>
 </html>
